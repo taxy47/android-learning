@@ -98,7 +98,10 @@ fun MyComponent() {
                 .background(Color.Blue)
         ) {
             Column {
-                Button(onClick = {}) {
+                Button(
+                    onClick = {},
+                    modifier = Modifier.fillMaxWidth().wrapContentWidth(Alignment.CenterHorizontally)
+                ) {
                     Text(
                         text = "This is a button test"
                     )
@@ -141,3 +144,22 @@ fun GreetingPreview() {
     }
     MyComponent()
 }
+
+fun sayHello() {
+    println("Hello")
+}
+
+val greet: (String) -> Unit = { name ->
+    println("Hello, $name")
+}
+
+fun doSomething(callback: (String) -> Unit) {
+    callback("World")  // 调用回调
+}
+
+fun test_doSomething() {
+    doSomething { name ->
+        println("Hello, $name")
+    }
+}
+
